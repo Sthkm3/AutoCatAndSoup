@@ -99,3 +99,6 @@ This project:
 - Uses Auto.js 6 as the development and compilation environment
 - Produces a standalone installable APK
 - Can be used without installing Auto.js after compilation
+
+<sub>This software uses AutoJs6 (MPL‑2.0 License) as its engine.
+Copyright (C) 2021‑2025 SuperMonster003 and contributors.</sub>
