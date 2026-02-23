@@ -96,3 +96,6 @@ Auto.js 6 是一套 Android 自动化脚本工具，通过 JavaScript 搭配无�
 - 使用 Auto.js 6 作为开发环境与编译环境
 - 最终产出为可独立安装的 APK
 - 安装后可在未安装 Auto.js 的情况下直接使用
+
+<sub>This software uses AutoJs6 (MPL‑2.0 License) as its engine.
+Copyright (C) 2021‑2025 SuperMonster003 and contributors.</sub>
