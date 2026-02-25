@@ -59,7 +59,6 @@ toast(isPaused ? "已暫停" : "已啟動"); });
 // 主循環
 while (true) {
     
-    var img = captureScreen();
     var pkg = currentPackage();
     
     // 判斷應用
@@ -68,17 +67,21 @@ while (true) {
         sleep(1000);
         continue;
     }
+    
+    var img = captureScreen();
   
     // 販賣商品
     if (config.sellProduct && !isPaused) {
-        if (
-            !images.detectsColor(img, "#B38282", 40, 1265) &&
-            !images.detectsColor(img, "#DCAB82", 40, 1265)
-        ) {
-            let x = random(30, 90);
-            let y = random(1200, 1240);
-            click(x, y);
-            sleep(200);
+        let l = (
+            !images.detectsColor(img, "#B38282", 35, 1267) &&
+            !images.detectsColor(img, "#DCAB82", 35, 1267)
+        )
+        let r = (
+            !images.detectsColor(img, "#B38282", 45, 1267) &&
+            !images.detectsColor(img, "#DCAB82", 45, 1267)
+        )
+        if (l || r) {
+            click(60, 1222);
         }
     }
 
@@ -86,7 +89,6 @@ while (true) {
     if (config.upgradeFacility && !isPaused) {
         if (!images.detectsColor(img, "#F7E5AE", 57, 1096)) {
             click(31, 1044);
-            sleep(200);
         }
     }
 
