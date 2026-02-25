@@ -1,6 +1,6 @@
 **| [English](README_en.md) | 繁體中文 | [简体中文](README_zh-CN.md) |**
 
-# **AutoCatAndSoup**
+# **AutoCatAndSoup (ACAS)**
 
 Cat and Soup auto script | 貓咪與湯輔助腳本，基於Autojs6撰寫和編譯。
 
@@ -39,7 +39,7 @@ Cat and Soup auto script | 貓咪與湯輔助腳本，基於Autojs6撰寫和編�
 
 > 未開發，請耐心等待後續更新。 
 
-## 安裝
+## 安裝 [![](https://img.shields.io/github/downloads/Sthkm3/AutoCatAndSoup/total?color=4e4c97)](https://github.com/Sthkm3/AutoCatAndSoup/releases)
 
 ### 方法一：使用已編譯 APK（推薦）
 
@@ -86,7 +86,7 @@ Cat and Soup auto script | 貓咪與湯輔助腳本，基於Autojs6撰寫和編�
 
 ## 關於 **Auto.js 6**
 
-本專案基於 Auto.js 6（AutoJS6） 開發與編譯。
+ACAS 基於 Auto.js 6（AutoJS6） 開發與編譯。
 Auto.js 6 是一套 Android 自動化腳本工具，透過 JavaScript 搭配無障礙服務實現點擊、滑動、畫面辨識等操作。
 
 本專案：
