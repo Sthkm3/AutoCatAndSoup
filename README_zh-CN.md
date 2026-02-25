@@ -40,7 +40,7 @@ Cat and Soup auto script | 猫咪与汤辅助脚本，基于 Auto.js 6 编写与
 
 > 尚未开发，请耐心等待后续更新。
 
-## 安装
+## 安装 [![](https://img.shields.io/github/downloads/Sthkm3/AutoCatAndSoup/total?color=4e4c97)](https://github.com/Sthkm3/AutoCatAndSoup/releases)
 
 ### 方法一：使用已编译 APK（推荐）
 
@@ -88,7 +88,7 @@ Cat and Soup auto script | 猫咪与汤辅助脚本，基于 Auto.js 6 编写与
 
 ## 关于 **Auto.js 6**
 
-本项目基于 Auto.js 6（AutoJS6）开发与编译。
+ACAS 基于 Auto.js 6（AutoJS6）开发与编译。
 Auto.js 6 是一套 Android 自动化脚本工具，通过 JavaScript 搭配无障碍服务实现点击、滑动及画面识别等操作。
 
 本项目：
