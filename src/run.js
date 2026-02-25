@@ -72,8 +72,8 @@ while (true) {
     // 販賣商品
     if (config.sellProduct && !isPaused) {
         if (
-            !images.detectsColor(img, "#B38282", 35, 1264) &&
-            !images.detectsColor(img, "#DCAB82", 35, 1264)
+            !images.detectsColor(img, "#B38282", 40, 1265) &&
+            !images.detectsColor(img, "#DCAB82", 40, 1265)
         ) {
             let x = random(30, 90);
             let y = random(1200, 1240);
@@ -84,12 +84,12 @@ while (true) {
 
     // 設施升級
     if (config.upgradeFacility && !isPaused) {
-        if (images.detectsColor(img, "#70FE7F", 95, 1024)) {
+        if (!images.detectsColor(img, "#F7E5AE", 57, 1096)) {
             click(31, 1044);
             sleep(200);
         }
     }
-    
+
     // 食譜升級
     if (config.upgradeRecipe && !isPaused) {
         if (images.detectsColor(img, "#FD7171", 581, 1081)) {
@@ -98,11 +98,12 @@ while (true) {
             var img = captureScreen();
             while (images.detectsColor(img, "#8EE3D3", 458, 1037)){
                 click(458, 1081);
-                sleep(100);
+                //sleep(100);
                 var img = captureScreen();
             }
-            //back();
-            sleep(3000);
+            sleep(100);
+            back();
+            sleep(500);
         }
     }
     
@@ -110,11 +111,18 @@ while (true) {
     if (config.Photo && !isPaused) {
         if (images.detectsColor(img, "#B5B5C6", 648, 813)){
             click(660, 815);
-            sleep(1000);
-            click(362, 1026);
-            sleep(1000);
+            var img = captureScreen();
+            while(!images.detectsColor(img, "#FFFFFF", 360, 950)){
+                var img = captureScreen();
+            }
+            click(360, 1025);
+            var img = captureScreen();
+            while(!images.detectsColor(img, "#F4ECD3", 360, 1150)){
+                var img = captureScreen();
+            }
+            sleep(500);
             back();
-            sleep(500); //images.detectsColor(img, "#FF6F6F", 681, 796)
+            sleep(500);
         }
     }
     
@@ -241,24 +249,30 @@ while (true) {
         }
     }
         
-    // 成就與任務
+    // 成就與任務 //370, 380 F3E5D3
     if (config.receiveAchievement && !isPaused) {
         if (images.detectsColor(img, "#FF6F6E", 680, 243)) {
             click(662, 263);
-            sleep(500);
+            sleep(1000);
             var img = captureScreen();
             if (images.detectsColor(img, "#FF6F6E", 307, 234)) {
                 click(225, 250);
-                sleep(1000);              
+                sleep(500);
+                var img = captureScreen();
                 while (images.detectsColor(img, "#8EE3D3", 520, 460) && !isPaused) {
                     click(520, 470);
                     sleep(100);
                     var img = captureScreen();
                 }
+                sleep(500);
+                if (images.detectsColor(img, "#F3E5D3", 370, 380) && !isPaused) {
+                    click(370, 380);
+                }
             }
             else {
                 click(495, 250);
-                sleep(1000);              
+                sleep(500);
+                var img = captureScreen();
                 while (images.detectsColor(img, "#8EE3D3", 520, 344) && !isPaused) {
                     click(520, 344);
                     sleep(100);
