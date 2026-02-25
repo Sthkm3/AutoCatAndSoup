@@ -42,7 +42,7 @@ Cat and Soup auto script | An assistant script for *Cat and Soup*, developed and
 
 > Not implemented yet. Please wait for future updates.
 
-## Installation
+## Installation [![](https://img.shields.io/github/downloads/Sthkm3/AutoCatAndSoup/total?color=4e4c97)](https://github.com/Sthkm3/AutoCatAndSoup/releases)
 
 ### Method 1: Use Precompiled APK (Recommended)
 
@@ -92,7 +92,7 @@ Cat and Soup auto script | An assistant script for *Cat and Soup*, developed and
 
 ## About **Auto.js 6**
 
-This project is developed and compiled using **Auto.js 6 (AutoJS6)**.  
+ACAS is developed and compiled using **Auto.js 6 (AutoJS6)**.  
 Auto.js 6 is an Android automation scripting tool that uses JavaScript in combination with the Accessibility Service to perform actions such as tapping, swiping, and screen recognition.
 
 This project:
