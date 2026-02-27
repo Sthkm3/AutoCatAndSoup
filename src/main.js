@@ -40,6 +40,20 @@ let config = {
     receiveAchievement: STORAGE.get("receiveAchievement", false)
 };
 
+// 浮窗權限檢查
+function checkFloatyPermission() {
+    if (!Settings.canDrawOverlays(context)) {
+        toast("請開啟懸浮窗權限");
+        var intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
+        intent.setData(Uri.parse("package:" + context.getPackageName()));
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        app.startActivity(intent);
+        return false;
+    }
+    return true;
+}
+    
+
 // 無障礙檢查
 function checkAccessibility() {
     if (!auto.service) {
@@ -185,6 +199,7 @@ ui.cbReceive7.on("check", checked => {
 // 啟動
 ui.btnStart.on("click", () => {
     if (!checkAccessibility()) return;
+    if (!checkFloatyPermission()) return;
 
     STORAGE.put("sellProduct", config.sellProduct);
     STORAGE.put("upgradeFacility", config.upgradeFacility);
@@ -205,7 +220,8 @@ ui.btnStart.on("click", () => {
     engines.execScriptFile("run.js");
 });
 
-// 啟動時提醒無障礙
+// 啟動時確認權限
 setTimeout(() => {
+    checkFloatyPermission();
     checkAccessibility();
 }, 300);
