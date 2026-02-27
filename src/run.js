@@ -64,7 +64,12 @@ while (true) {
     // 判斷應用
     if (pkg != "com.hidea.cat" && !isPaused) {
         app.launchPackage("com.hidea.cat");
-        sleep(1000);
+        toast("嘗試開啟遊戲...");
+        var img = captureScreen();
+        while(!images.detectsColor(img, "#F4ECD3", 685, 1095)){
+            sleep(5000);
+            var img = captureScreen();
+        }
         continue;
     }
     
@@ -87,7 +92,7 @@ while (true) {
 
     // 設施升級
     if (config.upgradeFacility && !isPaused) {
-        if (!images.detectsColor(img, "#F7E5AE", 57, 1096)) {
+        if (images.detectsColor(img, "#FFFFFF", 87, 1032)) {
             click(31, 1044);
         }
     }
@@ -99,8 +104,7 @@ while (true) {
             sleep(500);
             var img = captureScreen();
             while (images.detectsColor(img, "#8EE3D3", 458, 1037)){
-                click(458, 1081);
-                //sleep(100);
+                click(535, 1053);
                 var img = captureScreen();
             }
             sleep(100);
@@ -122,7 +126,6 @@ while (true) {
             while(!images.detectsColor(img, "#F4ECD3", 360, 1150)){
                 var img = captureScreen();
             }
-            sleep(500);
             back();
             sleep(500);
         }
@@ -155,19 +158,59 @@ while (true) {
     // 玩耍
     if (config.Play && !isPaused) {
        if (images.detectsColor(img, "#F9DBDC", 673, 737)) {
-            click(645, 739);
+           click(645, 739);
             sleep(3000);
             click(360, 800);
             sleep(500);
-            
-            swipe(360, 560, 360, 900, 1000);
-            sleep(100);
+            var playing_screen = (images.detectsColor(img, "#FDEFEF", 575, 400) && images.detectsColor(img, "#F2B1B1", 501, 858));
             var img = captureScreen();
-            while(images.detectsColor(img, "#F2B1B1", 501, 858)  && !isPaused){
-                swipe(360, 800, 360, 200, 3000);
-                sleep(100);
-                swipe(360, 300, 360, 900, 3000);
-                sleep(100);
+            while(playing_screen  && !isPaused){
+                //Up
+                swipe(360, 800, 360, 200, 300);
+                sleep(10);
+                swipe(360, 750, 360, 200, 275);
+                sleep(10);
+                swipe(360, 700, 360, 200, 250);
+                sleep(10);
+                swipe(360, 650, 360, 200, 225);
+                sleep(10);
+                swipe(360, 600, 360, 200, 200);
+                sleep(10);
+                swipe(360, 550, 360, 200, 175);
+                sleep(10);
+                swipe(360, 500, 360, 200, 150);
+                sleep(10);
+                swipe(360, 450, 360, 200, 125);
+                sleep(10);
+                swipe(360, 400, 360, 200, 100);
+                sleep(10);
+                swipe(360, 350, 360, 200, 75);
+                sleep(10);
+                swipe(360, 300, 360, 200, 50);
+                sleep(10);
+                //Down
+                swipe(360, 300, 360, 900, 300);
+                sleep(10);
+                swipe(360, 350, 360, 900, 275);
+                sleep(10);
+                swipe(360, 400, 360, 900, 250);
+                sleep(10);
+                swipe(360, 450, 360, 900, 225);
+                sleep(10);
+                swipe(360, 500, 360, 900, 200);
+                sleep(10);
+                swipe(360, 550, 360, 900, 175);
+                sleep(10);
+                swipe(360, 600, 360, 900, 150);
+                sleep(10);
+                swipe(360, 650, 360, 900, 125);
+                sleep(10);
+                swipe(360, 700, 360, 900, 100);
+                sleep(10);
+                swipe(360, 750, 360, 900, 75);
+                sleep(10);
+                swipe(360, 800, 360, 900, 50);
+                sleep(10);
                 var img = captureScreen();
             }
             click(415, 923);
@@ -251,7 +294,7 @@ while (true) {
         }
     }
         
-    // 成就與任務 //370, 380 F3E5D3
+    // 成就與任務
     if (config.receiveAchievement && !isPaused) {
         if (images.detectsColor(img, "#FF6F6E", 680, 243)) {
             click(662, 263);
