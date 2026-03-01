@@ -1,4 +1,4 @@
-/**
+-/**
  * 專案名稱: AutoCatAndSoup
  * Copyright (C) 2026 Sthkm3
  *
@@ -119,11 +119,13 @@ while (true) {
             click(660, 815);
             var img = captureScreen();
             while(!images.detectsColor(img, "#FFFFFF", 360, 950)){
+                sleep(100);
                 var img = captureScreen();
             }
             click(360, 1025);
             var img = captureScreen();
             while(!images.detectsColor(img, "#F4ECD3", 360, 1150)){
+                sleep(100);
                 var img = captureScreen();
             }
             back();
@@ -157,60 +159,44 @@ while (true) {
     
     // 玩耍
     if (config.Play && !isPaused) {
-       if (images.detectsColor(img, "#F9DBDC", 673, 737)) {
-           click(645, 739);
+        if (images.detectsColor(img, "#F9DBDC", 673, 737)) {
+            click(645, 739);
             sleep(3000);
             click(360, 800);
             sleep(500);
-            var playing_screen = (images.detectsColor(img, "#FDEFEF", 575, 400) && images.detectsColor(img, "#F2B1B1", 501, 858));
+            var playing_screen = (images.detectsColor(img, "#FDEFEF", 575, 400) && !images.detectsColor(img, "#F2B1B1", 501, 858));
             var img = captureScreen();
-            while(playing_screen  && !isPaused){
-                //Up
-                swipe(360, 800, 360, 200, 300);
-                sleep(10);
-                swipe(360, 750, 360, 200, 275);
-                sleep(10);
-                swipe(360, 700, 360, 200, 250);
-                sleep(10);
-                swipe(360, 650, 360, 200, 225);
-                sleep(10);
-                swipe(360, 600, 360, 200, 200);
-                sleep(10);
-                swipe(360, 550, 360, 200, 175);
-                sleep(10);
-                swipe(360, 500, 360, 200, 150);
-                sleep(10);
-                swipe(360, 450, 360, 200, 125);
-                sleep(10);
-                swipe(360, 400, 360, 200, 100);
-                sleep(10);
-                swipe(360, 350, 360, 200, 75);
-                sleep(10);
-                swipe(360, 300, 360, 200, 50);
-                sleep(10);
-                //Down
-                swipe(360, 300, 360, 900, 300);
-                sleep(10);
-                swipe(360, 350, 360, 900, 275);
-                sleep(10);
-                swipe(360, 400, 360, 900, 250);
-                sleep(10);
-                swipe(360, 450, 360, 900, 225);
-                sleep(10);
-                swipe(360, 500, 360, 900, 200);
-                sleep(10);
-                swipe(360, 550, 360, 900, 175);
-                sleep(10);
-                swipe(360, 600, 360, 900, 150);
-                sleep(10);
-                swipe(360, 650, 360, 900, 125);
-                sleep(10);
-                swipe(360, 700, 360, 900, 100);
-                sleep(10);
-                swipe(360, 750, 360, 900, 75);
-                sleep(10);
-                swipe(360, 800, 360, 900, 50);
-                sleep(10);
+            while(images.detectsColor(img, "#F2B1B1", 527, 846)  && !isPaused){
+                swipe(360, 800, 360, 200, 500); // up
+                sleep(50); 
+                swipe(360, 300, 360, 900, 500); // down
+                sleep(50); 
+
+                img = captureScreen();
+                var firstY = -1;
+                var lastY = -1;
+
+                // 從上往下
+                for (var y = 400; y <= 700; y += 10) {
+                    if (images.detectsColor(img, "#F9DBDC", 360, y)) {
+                        firstY = y;
+                        break;
+                    }
+                }
+
+                // 從下往上
+                for (var y = 700; y >= 400; y -= 10) {
+                    if (images.detectsColor(img, "#F9DBDC", 360, y)) {
+                        lastY = y;
+                        break;
+                    }
+                }
+                if (firstY !== -1 && lastY !== -1) {
+                    var avgY = (firstY + lastY) / 2;
+                    swipe(360, avgY, 360, 900, 500);
+                    sleep(50);
+                }
+
                 var img = captureScreen();
             }
             click(415, 923);
