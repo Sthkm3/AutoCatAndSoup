@@ -193,7 +193,7 @@ while (true) {
                 }
                 if (firstY !== -1 && lastY !== -1) {
                     var avgY = (firstY + lastY) / 2;
-                    swipe(360, avgY, 360, 900, 500);
+                    swipe(360, avgY, 360, 900, 300);
                     sleep(50);
                 }
 
