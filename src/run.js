@@ -66,8 +66,9 @@ while (true) {
         app.launchPackage("com.hidea.cat");
         toast("嘗試開啟遊戲...");
         var img = captureScreen();
-        while(!images.detectsColor(img, "#F4ECD3", 685, 1095)){
+        while(!images.detectsColor(img, "#F4ECD3", 685, 1095) && pkg == "com.hidea.cat"){
             sleep(5000);
+            var pkg = currentPackage();
             var img = captureScreen();
         }
         continue;
@@ -168,16 +169,16 @@ while (true) {
             var img = captureScreen();
             while(images.detectsColor(img, "#F2B1B1", 527, 846)  && !isPaused){
                 swipe(360, 800, 360, 200, 500); // up
-                sleep(50); 
+                sleep(100); 
                 swipe(360, 300, 360, 900, 500); // down
-                sleep(50); 
+                sleep(100); 
 
                 img = captureScreen();
                 var firstY = -1;
                 var lastY = -1;
 
                 // 從上往下
-                for (var y = 400; y <= 700; y += 10) {
+                for (var y = 300; y <= 800; y += 5) {
                     if (images.detectsColor(img, "#F9DBDC", 360, y)) {
                         firstY = y;
                         break;
@@ -185,7 +186,7 @@ while (true) {
                 }
 
                 // 從下往上
-                for (var y = 700; y >= 400; y -= 10) {
+                for (var y = 800; y >= 300; y -= 5) {
                     if (images.detectsColor(img, "#F9DBDC", 360, y)) {
                         lastY = y;
                         break;
@@ -193,7 +194,7 @@ while (true) {
                 }
                 if (firstY !== -1 && lastY !== -1) {
                     var avgY = (firstY + lastY) / 2;
-                    swipe(360, avgY, 360, 900, 300);
+                    swipe(360, avgY, 360, 900, 500);
                     sleep(50);
                 }
 
