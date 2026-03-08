@@ -23,6 +23,9 @@ importClass(android.provider.Settings);
 // 基本設定
 const STORAGE = storages.create("AutoCatAndSoupConfig");
 
+// 語言包
+const T = require("./i18n.js");
+
 // 設定資料
 let config = {
     sellProduct: STORAGE.get("sellProduct", false),
@@ -43,7 +46,7 @@ let config = {
 // 浮窗權限檢查
 function checkFloatyPermission() {
     if (!Settings.canDrawOverlays(context)) {
-        toast("請開啟懸浮窗權限");
+        toast("perm_floaty");
         var intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
         intent.setData(Uri.parse("package:" + context.getPackageName()));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -57,7 +60,7 @@ function checkFloatyPermission() {
 // 無障礙檢查
 function checkAccessibility() {
     if (!auto.service) {
-        toast("請啟用無障礙服務");
+        toast("perm_accessibility");
         app.startActivity({
             action: Settings.ACTION_ACCESSIBILITY_SETTINGS
         });
@@ -69,42 +72,42 @@ function checkAccessibility() {
 // UI
 ui.layout(
     <vertical>
-        <text text="Auto CatAndSoup 設定" textSize="20sp" textColor="#000000" gravity="center_horizontal" padding="16"/>
+        <text text="{{T('title')}}" textSize="20sp" textColor="#000000" gravity="center_horizontal" padding="16"/>
         
         <scroll layout_weight="1">
             <vertical padding="24">
-                <text text="── 基本 ──" textColor="#888888"/>
-                <checkbox id="cbSell" text="販賣商品"/>
-                <checkbox id="cbUpgrade" text="設施升級"/> 
-                <checkbox id="cbUpgrade2" text="食譜升級"/>
-                <checkbox id="cbBuild" text="設施建設(未開發)"/>
+                <text text="basic_section" textColor="#888888"/>
+                <checkbox id="cbSell" text="sell_product"/>
+                <checkbox id="cbUpgrade" text="upgrade_facility"/> 
+                <checkbox id="cbUpgrade2" text="upgrade_recipe"/>
+                <checkbox id="cbBuild" text="build_facility"/>
                 
                 <space h="16"/>
-                <text text="── 領取 ──" textColor="#888888"/>
-                <checkbox id="cbReceive" text="掛機獎勵"/>
-                <checkbox id="cbReceive2" text="罐子精靈獎勵"/>
-                <checkbox id="cbReceive3" text="商人獎勵"/>
-                <checkbox id="cbReceive4" text="黃金蝴蝶獎勵"/>
-                <checkbox id="cbReceive5" text="青蛙王子獎勵"/>
-                <checkbox id="cbReceive6" text="信箱"/>
-                <checkbox id="cbReceive7" text="成就"/>
+                <text text="collect_section" textColor="#888888"/>
+                <checkbox id="cbReceive" text="afk_reward"/>
+                <checkbox id="cbReceive2" text="jar_reward"/>
+                <checkbox id="cbReceive3" text="merchant_reward"/>
+                <checkbox id="cbReceive4" text="butterfly_reward"/>
+                <checkbox id="cbReceive5" text="frog_reward"/>
+                <checkbox id="cbReceive6" text="mail"/>
+                <checkbox id="cbReceive7" text="achievement"/>
                 
                 <space h="16"/>
-                <text text="─ 隨機任務 ─" textColor="#888888"/>
-                <checkbox id="cbPhoto" text="拍攝照片"/>
-                <checkbox id="cbGift" text="禮物"/>
-                <checkbox id="cbPlay" text="玩耍"/>
-                <checkbox id="cbTravel" text="旅行(未開發)"/>
+                <text text="random_task" textColor="#888888"/>
+                <checkbox id="cbPhoto" text="take_photo"/>
+                <checkbox id="cbGift" text="gift"/>
+                <checkbox id="cbPlay" text="play"/>
+                <checkbox id="cbTravel" text="travel"/>
                 
                 <space h="16"/>
-                <text text="─ 每日任務 ─" textColor="#888888"/>
-                <checkbox id="cbFishing" text="釣魚(未開發)"/>
-                <checkbox id="cbGacha" text="扭蛋(未開發)"/>
-                <checkbox id="cbShooting" text="投籃(未開發)"/>
+                <text text="daily_task" textColor="#888888"/>
+                <checkbox id="cbFishing" text="fishing"/>
+                <checkbox id="cbGacha" text="gacha"/>
+                <checkbox id="cbShooting" text="shooting"/>
             </vertical>
         </scroll>
 
-        <button id="btnStart" text="啟動" textSize="18sp" layout_gravity="center_horizontal" margin="16"/>
+        <button id="btnStart" text="start" textSize="18sp" layout_gravity="center_horizontal" margin="16"/>
     </vertical>
 );
 
