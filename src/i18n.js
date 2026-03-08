@@ -1,4 +1,30 @@
+/**
+ * 專案名稱: AutoCatAndSoup
+ * Copyright (C) 2026 Sthkm3
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ */
+
 const i18n = {};
+
+const locale = java.util.Locale.getDefault().getLanguage();
+
+let currentLang = "zh";
+
+if (locale.startsWith("en")) {
+    currentLang = "en";
+}
 
 // 支援的語系定義
 const languages = {
@@ -75,8 +101,11 @@ const languages = {
     }
 };
 
-// 獲取當前語系 (預設英文，如果是中文則回傳中文)
-let sysLang = java.util.Locale.getDefault().getLanguage();
-let currentStrings = sysLang.match(/^zh/) ? languages["zh"] : languages["en"];
+function t(key){
+    if(languages[currentLang] && languages[currentLang][key]){
+        return languages[currentLang][key];
+    }
+    return key;
+}
 
-module.exports = currentStrings;
+module.exports = t;
