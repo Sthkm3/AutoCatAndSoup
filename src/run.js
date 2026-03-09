@@ -1,4 +1,4 @@
--/**
+/**
  * 專案名稱: AutoCatAndSoup
  * Copyright (C) 2026 Sthkm3
  *
@@ -19,6 +19,9 @@
 "auto";
 
 const STORAGE = storages.create("AutoCatAndSoupConfig");
+
+// 語言包
+const T = require("./i18n.js");
 
 const SCREEN_W = 720;
 const SCREEN_H = 1280;
@@ -46,15 +49,15 @@ let isPaused = false;
 let win = floaty.rawWindow(
     <vertical bg="#AA000000" padding="6">
         <text text="Auto CatAndSoup" textColor="#FFFFFF" textSize="12sp"/>
-        <button id="btnPause" text="暫停"/>
+        <button id="btnPause" text="pause"/>
     </vertical>
 );
 
 win.setPosition(0, (SCREEN_H / 2) - 80);
 win.setSize(160, -2); win.btnPause.click(() => { isPaused = !isPaused;
 
-win.btnPause.setText(isPaused ? "啟動" : "暫停");
-toast(isPaused ? "已暫停" : "已啟動"); });
+win.btnPause.setText(isPaused ? "{{T('start')}}" : "{{T('pause')}}");
+toast(isPaused ? "{{T('pause')}}" : "{{T('start')}}"); });
 
 // 主循環
 while (true) {
@@ -64,10 +67,10 @@ while (true) {
     // 判斷應用
     if (pkg != "com.hidea.cat" && !isPaused) {
         app.launchPackage("com.hidea.cat");
-        toast("嘗試開啟遊戲...");
+        toast("launching_game");
         var img = captureScreen();
         while(!images.detectsColor(img, "#F4ECD3", 685, 1095) && pkg == "com.hidea.cat"){
-            sleep(5000);
+            sleep(1000);
             var pkg = currentPackage();
             var img = captureScreen();
         }
