@@ -59,8 +59,6 @@ const languages = {
         // 按鈕與提示
         "start": "啟動",
         "pause": "暫停",
-        "resume": "繼續",
-        "running": "運行中",
         "perm_floaty": "請開啟懸浮窗權限",
         "perm_accessibility": "請啟用無障礙服務",
         "launching_game": "嘗試開啟遊戲..."
@@ -93,8 +91,6 @@ const languages = {
         
         "start": "START",
         "pause": "PAUSE",
-        "resume": "RESUME",
-        "running": "Running",
         "perm_floaty": "Please enable Floating Window permission",
         "perm_accessibility": "Please enable Accessibility service",
         "launching_game": "Launching game..."
