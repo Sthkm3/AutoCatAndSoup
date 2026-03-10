@@ -19,9 +19,8 @@
 "auto";
 
 const STORAGE = storages.create("AutoCatAndSoupConfig");
-
-// 語言包
 const T = require("./i18n.js");
+const Tasks = require("./tasks.js");
 
 const SCREEN_W = 720;
 const SCREEN_H = 1280;
@@ -61,17 +60,20 @@ toast(isPaused ? "{{T('pause')}}" : "{{T('start')}}"); });
 
 // 主循環
 while (true) {
-    
-    var pkg = currentPackage();
+
+    //暫停等待
+    if (isPaused) {
+        sleep(1000);
+        continue;
+    }
     
     // 判斷應用
-    if (pkg != "com.hidea.cat" && !isPaused) {
+    if (currentPackage() != "com.hidea.cat" && !isPaused) {
         app.launchPackage("com.hidea.cat");
-        toast("launching_game");
+        toast("{{T('launchingʼ)}}");
         var img = captureScreen();
-        while(!images.detectsColor(img, "#F4ECD3", 685, 1095) && pkg == "com.hidea.cat"){
+        while(!images.detectsColor(img, "#F4ECD3", 685, 1095) && currentPackage() == "com.hidea.cat"){
             sleep(1000);
-            var pkg = currentPackage();
             var img = captureScreen();
         }
         continue;
@@ -110,10 +112,8 @@ while (true) {
             while (images.detectsColor(img, "#8EE3D3", 458, 1037)){
                 click(535, 1053);
                 var img = captureScreen();
-            }
-            sleep(100);
-            back();
-            sleep(500);
+            } sleep(100);
+            back(); sleep(500);
         }
     }
     
@@ -132,8 +132,7 @@ while (true) {
                 sleep(100);
                 var img = captureScreen();
             }
-            back();
-            sleep(500);
+            back(); sleep(500);
         }
     }
     
@@ -145,16 +144,12 @@ while (true) {
             while (!images.detectsColor(img, "#FFFFFF", 250, 825)){
                 sleep(100);
                 var img = captureScreen();
-            }
-            sleep(500);
-            click(360, 760);
-            sleep(500);
-            back();
-            sleep(2000);
+            } sleep(500);
+            click(360, 760); sleep(500);
+            back(); sleep(2000);
             var img = captureScreen();
             if (images.detectsColor(img, "#FFFFFF", 250, 830)){
-                click(360, 735);
-                sleep(3000);
+                click(360, 735); sleep(3000);
                 back();
             }
             sleep(500);
@@ -164,17 +159,13 @@ while (true) {
     // 玩耍
     if (config.Play && !isPaused) {
         if (images.detectsColor(img, "#F9DBDC", 673, 737)) {
-            click(645, 739);
-            sleep(3000);
-            click(360, 800);
-            sleep(500);
+            click(645, 739); sleep(3000);
+            click(360, 800); sleep(500);
             var playing_screen = (images.detectsColor(img, "#FDEFEF", 575, 400) && !images.detectsColor(img, "#F2B1B1", 501, 858));
             var img = captureScreen();
             while(images.detectsColor(img, "#F2B1B1", 527, 846)  && !isPaused){
-                swipe(360, 800, 360, 200, 500); // up
-                sleep(100); 
-                swipe(360, 300, 360, 900, 500); // down
-                sleep(100); 
+                swipe(360, 800, 360, 200, 500); sleep(50);// up
+                swipe(360, 300, 360, 900, 500); sleep(50);// down
 
                 img = captureScreen();
                 var firstY = -1;
@@ -197,76 +188,61 @@ while (true) {
                 }
                 if (firstY !== -1 && lastY !== -1) {
                     var avgY = (firstY + lastY) / 2;
-                    swipe(360, avgY, 360, 900, 500);
-                    sleep(50);
+                    swipe(360, avgY, 360, 900, 500); sleep(50);
                 }
 
                 var img = captureScreen();
             }
-            click(415, 923);
-            sleep(1000);
+            click(415, 923); sleep(1000);
         }
     }
     
     // 掛機獎勵
     if (config.receiveAFK && !isPaused) {
         if (images.detectsColor(img, "#E3C5AE", 371, 1092)) {
-            click(360, 1130);
-            sleep(500);
-            click(420, 809);
-            sleep(500);
+            click(360, 1130); sleep(500);
+            click(420, 809); sleep(500);
         }
     }
     
     // 罐子精靈獎勵
     if (config.receiveJar && !isPaused) {
         if (images.detectsColor(img, "#AAAAAA", 433, 1132)) {
-            click(360, 1130);
-            sleep(500);
-            click(420, 844);
-            sleep(500);
+            click(360, 1130); sleep(500);
+            click(420, 844); sleep(500);
         }
     }
 
     // 商人獎勵
     if (config.receiveMerchant && !isPaused) {
         if (images.detectsColor(img, "#DB937D", 351, 1152)) {
-            click(360, 1130);
-            sleep(500);
-            click(420, 755);
-            sleep(500);
+            click(360, 1130); sleep(500);
+            click(420, 755); sleep(500);
         }
     }
     
     // 黃金蝴蝶獎勵
     if (config.receiveButterfly && !isPaused) {
         if (images.detectsColor(img, "#FBE771", 71, 280)) {
-            click(71, 280);
-            sleep(2000);
-            click(360, 650);
-            sleep(300);
-            click(423, 724);
-            sleep(500);
+            click(71, 280); sleep(2000);
+            click(360, 650); sleep(300);
+            click(423, 724); sleep(500);
         }
     }
     
     // 青蛙王子獎勵
     if (config.receiveFrog && !isPaused) {
         if (images.detectsColor(img, "#D8E0B7", 55, 291) && images.detectsColor(img, "#D8E0B7", 49, 291)) {
-            click(71, 280);
-            sleep(2000);
-            click(360, 650);
-            sleep(300);
-            click(423, 724);
-            sleep(500);
+            click(71, 280); sleep(2000);
+            click(360, 650); sleep(300);
+            click(423, 724); sleep(500);
         }
     }
     
     // 信箱
     if (config.receiveMail && !isPaused) {
         if (images.detectsColor(img, "#FFFFFF", 376, 199) && images.detectsColor(img, "#F2DFC7", 356, 234)) {
-            click(360, 208);
-            sleep(1000);
+            click(360, 208); sleep(1000);
             var img = captureScreen();
             while (images.detectsColor(img, "#8EE3D3", 570, 380) && !isPaused) {
                 click(484, 398);
@@ -275,28 +251,23 @@ while (true) {
                 if (images.detectsColor(img, "#E5D8CA", 489, 632)) {
                     click(400, 720);
                     var img = captureScreen();
-                }
-                sleep(500);
+                } sleep(500);
                 var img = captureScreen();
             }
-            back();
-            sleep(500);
+            back(); sleep(500);
         }
     }
         
     // 成就與任務
     if (config.receiveAchievement && !isPaused) {
         if (images.detectsColor(img, "#FF6F6E", 680, 243)) {
-            click(662, 263);
-            sleep(1000);
+            click(662, 263); sleep(1000);
             var img = captureScreen();
             if (images.detectsColor(img, "#FF6F6E", 307, 234)) {
-                click(225, 250);
-                sleep(500);
+                click(225, 250); sleep(500);
                 var img = captureScreen();
                 while (images.detectsColor(img, "#8EE3D3", 520, 460) && !isPaused) {
-                    click(520, 470);
-                    sleep(100);
+                    click(520, 470); sleep(100);
                     var img = captureScreen();
                 }
                 sleep(500);
@@ -305,17 +276,14 @@ while (true) {
                 }
             }
             else {
-                click(495, 250);
-                sleep(500);
+                click(495, 250); sleep(500);
                 var img = captureScreen();
                 while (images.detectsColor(img, "#8EE3D3", 520, 344) && !isPaused) {
-                    click(520, 344);
-                    sleep(100);
+                    click(520, 344); sleep(100);
                     var img = captureScreen();
                 }
             }
-            back();
-            sleep(500);
+            back(); sleep(500);
         }
     }
     img.recycle();
