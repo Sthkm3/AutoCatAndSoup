@@ -76,38 +76,38 @@ ui.layout(
         
         <scroll layout_weight="1">
             <vertical padding="24">
-                <text text="{{T('basic_sectionʼ)}}" textColor="#888888"/>
-                <checkbox id="cbSell" text="{{T('sell_productʼ)}}"/>
-                <checkbox id="cbUpgrade" text="{{T('upgrade_facilityʼ)}}"/> 
-                <checkbox id="cbUpgrade2" text="{{T('upgrade_recipeʼ)}}"/>
-                <checkbox id="cbBuild" text="{{T('build_facilityʼ)}}"/>
+                <text text="{{T('basic_section')}}" textColor="#888888"/>
+                <checkbox id="cbSell" text="{{T('sell_product')}}"/>
+                <checkbox id="cbUpgrade" text="{{T('upgrade_facility')}}"/> 
+                <checkbox id="cbUpgrade2" text="{{T('upgrade_recipe')}}"/>
+                <checkbox id="cbBuild" text="{{T('build_facility')}}"/>
                 
                 <space h="16"/>
-                <text text="{{T('collect_sectionʼ)}}" textColor="#888888"/>
-                <checkbox id="cbReceive" text="{{T('afk_rewardʼ)}}"/>
-                <checkbox id="cbReceive2" text="{{T('jar_rewardʼ)}}"/>
-                <checkbox id="cbReceive3" text="{{T('merchant_rewardʼ)}}"/>
-                <checkbox id="cbReceive4" text="{{T('butterfly_rewardʼ)}}"/>
-                <checkbox id="cbReceive5" text="{{T('frog_rewardʼ)}}"/>
-                <checkbox id="cbReceive6" text="{{T('mailʼ)}}"/>
-                <checkbox id="cbReceive7" text="{{T('achievementʼ)}}"/>
+                <text text="{{T('collect_section')}}" textColor="#888888"/>
+                <checkbox id="cbReceive" text="{{T('afk_reward')}}"/>
+                <checkbox id="cbReceive2" text="{{T('jar_reward')}}"/>
+                <checkbox id="cbReceive3" text="{{T('merchant_reward')}}"/>
+                <checkbox id="cbReceive4" text="{{T('butterfly_reward')}}"/>
+                <checkbox id="cbReceive5" text="{{T('frog_reward')}}"/>
+                <checkbox id="cbReceive6" text="{{T('mail')}}"/>
+                <checkbox id="cbReceive7" text="{{T('achievement')}}"/>
                 
                 <space h="16"/>
-                <text text="{{T('random_taskʼ)}}" textColor="#888888"/>
-                <checkbox id="cbPhoto" text="{{T('take_photoʼ)}}"/>
-                <checkbox id="cbGift" text="{{T('giftʼ)}}"/>
-                <checkbox id="cbPlay" text="{{T('playʼ)}}"/>
-                <checkbox id="cbTravel" text="{{T('travelʼ)}}"/>
+                <text text="{{T('random_task')}}" textColor="#888888"/>
+                <checkbox id="cbPhoto" text="{{T('take_photo')}}"/>
+                <checkbox id="cbGift" text="{{T('gift')}}"/>
+                <checkbox id="cbPlay" text="{{T('play')}}"/>
+                <checkbox id="cbTravel" text="{{T('travel')}}"/>
                 
                 <space h="16"/>
-                <text text="{{T('daily_taskʼ)}}" textColor="#888888"/>
-                <checkbox id="cbFishing" text="{{T('fishingʼ)}}"/>
-                <checkbox id="cbGacha" text="{{T('gachaʼ)}}"/>
-                <checkbox id="cbShooting" text="{{T('shootingʼ)}}"/>
+                <text text="{{T('daily_task')}}" textColor="#888888"/>
+                <checkbox id="cbFishing" text="{{T('fishing')}}"/>
+                <checkbox id="cbGacha" text="{{T('gacha')}}"/>
+                <checkbox id="cbShooting" text="{{T('shooting')}}"/>
             </vertical>
         </scroll>
 
-        <button id="btnStart" text="{{T('startʼ)}}" textSize="18sp" layout_gravity="center_horizontal" margin="16"/>
+        <button id="btnStart" text="{{T('start')}}" textSize="18sp" layout_gravity="center_horizontal" margin="16"/>
     </vertical>
 );
 
