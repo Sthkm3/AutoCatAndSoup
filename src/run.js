@@ -106,8 +106,7 @@ while (true) {
     // 食譜升級
     if (config.upgradeRecipe && !isPaused) {
         if (images.detectsColor(img, "#FD7171", 581, 1081)) {
-            click(550, 1101);
-            sleep(500);
+            click(550, 1101); sleep(500);
             var img = captureScreen();
             while (images.detectsColor(img, "#8EE3D3", 458, 1037)){
                 click(535, 1053);
