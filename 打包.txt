@@ -1,0 +1,6 @@
+AutoCatAndSoup
+auto.hidea.com
+
+允許前台服務
+允許錄製螢幕
+允許顯示在應用上層 system alert window
