@@ -1,4 +1,10 @@
 while (true) {
+   
+
+    
+
+ 
+
     // --- 根據 Config 呼叫對應的 Task ---
     if (config.sellProduct) Tasks.sellProduct(img);
     
