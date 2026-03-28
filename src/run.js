@@ -120,7 +120,7 @@ while (true) {
     
     // 拍照
     if (config.Photo && !isPaused) {
-        if (images.detectsColor(img, "#B5B5C6", 648, 813)){
+        if (images.detectsColor(img, "#B5B5C6", 648, 813) && images.detectsColor(img, "#FD7171", 682, 795)){
             click(660, 815);
             var img = captureScreen();
             while(!images.detectsColor(img, "#FFFFFF", 360, 950)){
