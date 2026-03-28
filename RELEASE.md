@@ -3,7 +3,7 @@
 Date 今天晚上到圖書館
 
 ## 更新
-- 優化 `照相` 判斷邏輯
+
 - 新增 `返回設定` 按鍵
 
 
@@ -23,9 +23,10 @@ Date
 - 新增`語言包`功能(繁體中文, 英文)
 - 修正`自動啟動`錯誤
 - 調整`玩耍`歸位精細度
-- 
+- 優化 `照相` 判斷邏輯
+
 ## 支援
-- 遊戲版本：4.29.2
+- 遊戲版本：4.30.1
 - 解析度：720x1280
 - 語言：繁體中文、English
 
@@ -36,7 +37,7 @@ Date
 - Increase `PLay` repositioning precision
 
 ## Support
-- Game version: 4.29.2
+- Game version: 4.30.1
 - Resolution: 720x1280
 - Language: Traditional chinese, English
 
