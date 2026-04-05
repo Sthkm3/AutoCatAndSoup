@@ -109,4 +109,3 @@ tasks.playWithCat = function(img) {
 };
 
 module.exports = tasks;
-// test
