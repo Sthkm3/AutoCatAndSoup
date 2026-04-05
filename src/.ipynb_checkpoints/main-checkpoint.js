@@ -1,4 +1,4 @@
--/**
+/**
  * 專案名稱: AutoCatAndSoup
  * Copyright (C) 2026 Sthkm3
  *
@@ -46,7 +46,7 @@ let config = {
 // 浮窗權限檢查
 function checkFloatyPermission() {
     if (!Settings.canDrawOverlays(context)) {
-        toast("perm_floaty");
+        toast(T('perm_floaty'));
         var intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION);
         intent.setData(Uri.parse("package:" + context.getPackageName()));
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -60,7 +60,7 @@ function checkFloatyPermission() {
 // 無障礙檢查
 function checkAccessibility() {
     if (!auto.service) {
-        toast("perm_accessibility");
+        toast(T('perm_accessibility'));
         app.startActivity({
             action: Settings.ACTION_ACCESSIBILITY_SETTINGS
         });

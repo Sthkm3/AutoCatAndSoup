@@ -48,15 +48,20 @@ let isPaused = false;
 let win = floaty.rawWindow(
     <vertical bg="#AA000000" padding="6">
         <text text="Auto CatAndSoup" textColor="#FFFFFF" textSize="12sp"/>
-        <button id="btnPause" text="pause"/>
+        <button id="btnPause" text="{{T('pause')}}"/>
     </vertical>
 );
 
 win.setPosition(0, (SCREEN_H / 2) - 80);
-win.setSize(160, -2); win.btnPause.click(() => { isPaused = !isPaused;
+win.setSize(160, -2);
 
-win.btnPause.setText(isPaused ? "{{T('start')}}" : "{{T('pause')}}");
-toast(isPaused ? "{{T('pause')}}" : "{{T('start')}}"); });
+win.btnPause.click(() => { 
+    isPaused = !isPaused;
+    ui.run(() => {
+        win.btnPause.setText(isPaused ? T('start') : T('pause'));
+    });
+    toast(isPaused ? T('pause') : T('start')); 
+});
 
 // 主循環
 while (true) {
@@ -69,13 +74,16 @@ while (true) {
     
     // 判斷應用
     if (currentPackage() != "com.hidea.cat" && !isPaused) {
+        home();
+        sleep(1000);
+        
         app.launchPackage("com.hidea.cat");
-        toast("{{T('launchingʼ)}}");
+        toast(T('launching'));
         var img = captureScreen();
         var launch_time = 0;
-        while(!images.detectsColor(img, "#F4ECD3", 685, 1095) && launch_time <= 600) //啟動五分鐘無果 再次啟動
+        while(!images.detectsColor(img, "#F4ECD3", 685, 1095) && launch_time <= 600){ //啟動五分鐘無果 再次啟動
             launch_time += 1;
-            sleep(1000);
+            sleep(5000);
             var img = captureScreen();
         }
         continue;
@@ -120,7 +128,7 @@ while (true) {
     
     // 拍照
     if (config.Photo && !isPaused) {
-        if (images.detectsColor(img, "#B5B5C6", 648, 813)){
+        if (images.detectsColor(img, "#B5B5C6", 648, 813) && images.detectsColor(img, "#FD7171", 682, 795)){
             click(660, 815);
             var img = captureScreen();
             while(!images.detectsColor(img, "#FFFFFF", 360, 950)){
